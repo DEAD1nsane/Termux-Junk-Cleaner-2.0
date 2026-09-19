@@ -13,13 +13,13 @@ $$
 
 </p>
 <p align="center">
-<a href="https://github.com/ArjunCodesmith"><img title="Github" src="https://img.shields.io/badge/Github-ArjunCodesmith-brightgreen?style=for-the-badge&logo=github"></a>
+<a href="https://github.com/DEAD1nsane"><img title="Github" src="https://img.shields.io/badge/Github-DEAD1nsane-brightgreen?style=for-the-badge&logo=github"></a>
 </p>
 <p align="center">
-<a href="https://github.com/ArjunCodesmith"><img title="Tool" src="https://img.shields.io/badge/Tool-Termux Junk Cleaner-red.svg"></a>
+<a href="https://github.com/DEAD1nsane/termux-junk-cleaner"><img title="Tool" src="https://img.shields.io/badge/Tool-Termux Junk Cleaner-red.svg"></a>
 <a href="https://github.com/DEAD1nsane/termux-junk-cleaner"><img title="Version" src="https://img.shields.io/badge/Version-2.0-yellow.svg"></a>
-<a href="https://github.com/ArjunCodesmith"><img title="Maintainence" src="https://img.shields.io/badge/Maintained%3F-yes-blue.svg"></a>
-<a href="https://github.com/DEAD1nsane"><img title="Contributor" src="https://img.shields.io/badge/Contributor-DEAD1nsane-010101.svg"></a>
+<a href="https://github.com/DEAD1nsane/termux-junk-cleaner"><img title="Maintainence" src="https://img.shields.io/badge/Maintained%3F-yes-blue.svg"></a>
+<a href="https://github.com/DEAD1nsane"><img title="Maintainer" src="https://img.shields.io/badge/Maintainer-DEAD1nsane-010101.svg"></a>
 </p>
 
 ## About
