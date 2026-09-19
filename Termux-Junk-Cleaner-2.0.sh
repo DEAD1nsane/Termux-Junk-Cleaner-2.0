@@ -413,10 +413,10 @@ show_summary() {
     local freed
     freed=$(human "$bytes_freed")
     echo -e "\n${RED}╔══════════════════════════════════════╗${RESET}"
-    printf "${RED}║${WHITE}  %-22s ${GREEN}%10s${WHITE}  ${RED}║${RESET}\n" "Files deleted:" "$files_deleted"
-    printf "${RED}║${WHITE}  %-22s ${GREEN}%10s${WHITE}  ${RED}║${RESET}\n" "Packages cleaned:" "$packages_cleaned"
-    printf "${RED}║${WHITE}  %-22s ${GREEN}%10s${WHITE}  ${RED}║${RESET}\n" "Packages removed:" "~$packages_removed"
-    printf "${RED}║${WHITE}  %-22s ${GREEN}%10s${WHITE}  ${RED}║${RESET}\n" "Space freed:" "$freed"
+    printf "${RED}║${WHITE}  %-22s ${GREEN}%10s${WHITE}   ${RED}║${RESET}\n" "Files deleted:" "$files_deleted"
+    printf "${RED}║${WHITE}  %-22s ${GREEN}%10s${WHITE}   ${RED}║${RESET}\n" "Packages cleaned:" "$packages_cleaned"
+    printf "${RED}║${WHITE}  %-22s ${GREEN}%10s${WHITE}   ${RED}║${RESET}\n" "Packages removed:" "~$packages_removed"
+    printf "${RED}║${WHITE}  %-22s ${GREEN}%10s${WHITE}   ${RED}║${RESET}\n" "Space freed:" "$freed"
     echo -e "${RED}╚══════════════════════════════════════╝${RESET}"
     echo -e "${GREEN}  Cleanup completed! Log: $LOG_FILE${RESET}\n"
     log_msg "SUMMARY files=$files_deleted cleaned=$packages_cleaned removed=~$packages_removed freed=$freed"
