@@ -41,12 +41,12 @@ cd Termux-Junk-Cleaner-2.0
 pkg install fzf -y
 
 # Make script executable
-chmod +x termux-junk-cleaner.sh
+chmod +x Termux-Junk-Cleaner-2.0.sh
 ```
 
 Then run:
 ```bash
-./termux-junk-cleaner.sh
+./Termux-Junk-Cleaner-2.0.sh
 ```
 
 ## Features
