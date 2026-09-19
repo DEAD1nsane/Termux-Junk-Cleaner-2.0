@@ -101,6 +101,6 @@ Non-interactive options: `--all` (clean everything), `--dry-run` (show reclaimab
 
 ## Credits
 
-**ArjunCodesmith** - Original author and creator
+**ArjunCodesmith** - Original author and creator, logo design
 
 **DEAD1nsane** - Interactive menu UI and loading animations
