@@ -49,6 +49,8 @@ Then run:
 ./Termux-Junk-Cleaner-2.0.sh
 ```
 
+Non-interactive options: `--all` (clean everything), `--dry-run` (show reclaimable sizes, delete nothing), `--yes` (skip confirmation), `--help`.
+
 ## Features
 
 - **Interactive Menu** - fzf-powered checkbox interface with arrow key navigation
