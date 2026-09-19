@@ -1,90 +1,84 @@
 <p align="center">
-<a href="https://github.com/ArjunCodesmith"><img title="Termux-Junk-Cleaner" src="TJClogo.png"></a>
+
+$$
+\begin{matrix}
+\color{#D2691E}{\text{         ┌─────────┐ ឵឵  ឵឵  ឵឵}}\kern{125pt}\color{#D2691E}{\text{ ឵឵ ឵឵  ឵឵ ┌─────────┐}}\text{} \\
+\color{#D2691E}{\text{       ──────│}}\kern{14pt}\color{#ADD8E6}{\text{[▓▓▓▓▓▓▓▓░░░░░]}}\kern{14pt}\color{#D2691E}{\text{│──────}} \\
+\color{#D2691E}{\text{ ─────────── │}}\quad\kern{16pt}\color{#5af78e}{\text{𝗧Ξ𝗥𝗠𝗨𝗫}}\kern{10pt}\color{#5af78e}{\text{𝗝Ξ𝗡𝗞}}\kern{16pt}\quad\color{#D2691E}{\text{│ ───────────}} \\
+\color{#D2691E}{\text{ ─────────── │}}\kern{14pt}\color{#5af78e}{\text{𝗖}}\kern{10pt}\color{#5af78e}{\text{𝗟}}\kern{10pt}\color{#5af78e}{\text{𝗘}}\kern{10pt}\color{#5af78e}{\text{𝗔}}\kern{10pt}\color{#5af78e}{\text{𝗡}}\kern{10pt}\color{#5af78e}{\text{𝗘}}\kern{10pt}\color{#5af78e}{\text{𝗥}}\kern{14pt}\color{#D2691E}{\text{│ ───────────}} \\
+\color{#D2691E}{\text{       ──────│}}\kern{14pt}\color{#ADD8E6}{\text{[░░░░░▓▓▓▓▓▓▓▓]}}\kern{14pt}\color{#D2691E}{\text{│──────}} \\
+\color{#D2691E}{\text{         └─────────┘ ឵឵  ឵឵  ឵឵}}\kern{125pt}\color{#D2691E}{\text{ ឵឵  ឵឵  ឵឵└─────────┘}}\text{}
+\end{matrix}
+$$
+
 </p>
 <p align="center">
 <a href="https://github.com/ArjunCodesmith"><img title="Github" src="https://img.shields.io/badge/Github-ArjunCodesmith-brightgreen?style=for-the-badge&logo=github"></a>
-</a>
+</p>
 <p align="center">
 <a href="https://github.com/ArjunCodesmith"><img title="Tool" src="https://img.shields.io/badge/Tool-Termux Junk Cleaner-red.svg"></a>
-<a href="https://github.com/ArjunCodesmith"><img title="Version" src="https://img.shields.io/badge/Version-0.2.0-yellow.svg"></a>
+<a href="https://github.com/ArjunCodesmith"><img title="Version" src="https://img.shields.io/badge/Version-0.3.0-yellow.svg"></a>
 <a href="https://github.com/ArjunCodesmith"><img title="Maintainence" src="https://img.shields.io/badge/Maintained%3F-yes-blue.svg"></a>
+<a href="https://github.com/DEAD1nsane"><img title="Contributor" src="https://img.shields.io/badge/Contributor-DEAD1nsane-010101.svg"></a>
 </p>
 
-## About Tool
+## About
 
-Termux Junk Cleaner is a powerful junk cleanup tool designed to optimize and declutter your Termux environment. It offers a comprehensive set of features to clean up various unnecessary files, logs, cached data and more.
+Termux Junk Cleaner is a powerful junk cleanup tool designed to optimize and declutter your Termux environment. It offers a clean, interactive interface to remove unnecessary files, logs, cached data, and more.
 
-## Installation
+## Install
 
-- #### Clone the repository:
+Run this one-liner to clone, install dependencies, and make executable:
+
 ```bash
+# Clone the repository
 git clone https://github.com/ArjunCodesmith/termux-junk-cleaner.git
-````
-- #### Navigate to the project directory:
-```bash
+
+# Navigate to directory
 cd termux-junk-cleaner
-```
-- #### Give executable permission to the file
-```bash
+
+# Install fzf (required for interactive menu)
+pkg install fzf -y
+
+# Make script executable
 chmod +x termux-junk-cleaner.sh
 ```
-- #### Run the script:
- ```bash
- ./termux-junk-cleaner.sh
+
+Then run:
+```bash
+./termux-junk-cleaner.sh
 ```
 
 ## Features
 
-- #### Selective Cleanup:
-Choose specific cleanup options tailored to your needs (cached packages, temporary files, logs).
+- **Interactive Menu** - fzf-powered checkbox interface with arrow key navigation
+- **Selective Cleanup** - Choose exactly what to clean
+- **Visual Feedback** - Animated loading bars for each operation
+- **Cleanup Summary** - View stats after each run
 
--	 ##### Cache Cleanup: Remove redundant cache files to free up space.
--	 ##### Cached Packages Cleanup: Efficiently clean cached packages to enhance performance.
--	 ##### Unused Packages Removal: Safely remove unnecessary or unused packages.
--	 ##### Temporary Files Cleanup: Eliminate temporary files that may accumulate over time.
--	 ##### Temporary Backup Files Cleanup: Ensure a clean slate by removing temporary backup files.
--	 ##### Unnecessary Logs Cleanup: Improve system cleanliness by cleaning unnecessary logs.
+### What it cleans:
+| Option | Description |
+|--------|-------------|
+| Backup files | Removes `*.bak` files |
+| Cache files | Clears `~/.cache` and app cache |
+| Cached packages | Runs `apt-get clean` |
+| Log files | Removes `*.log` files |
+| Temporary files | Clears `~/tmp` |
+| Unused packages | Runs `apt autoremove` |
 
-- #### Detailed Logs:
-The tool generates cleanup details in cleanup_log.txt.
+## Controls
 
-## Usage
-Termux Junk Cleaner provides a flexible and user-friendly interface for cleanup operations. You can choose specific cleanup options, or run it interactively for a customized cleanup.
-### Options
+| Key | Action |
+|-----|--------|
+| `↑↓` | Navigate |
+| `Tab` | Select/Deselect |
+| `Ctrl+A` | Select all |
+| `Ctrl+D` | Deselect all |
+| `Enter` | Start cleanup |
+| `Esc` | Quit |
 
-Interactive Mode:
-```bash
-./termux-junk-cleaner.sh
-```
-Help:
-```bash
-./termux-junk-cleaner.sh -h
-```
-Clean Cache Files:
-```bash
-./termux-junk-cleaner.sh -c
-```
-Clean Cached Packages:
-```bash
-./termux-junk-cleaner.sh -p
-```
-Remove Unnecessary Packages:
-```bash
-./termux-junk-cleaner.sh -n
-```
-Clean Temporary Files:
-```bash
-./termux-junk-cleaner.sh -t
-```
-Clean Temporary Backup Files:
-```bash
-./termux-junk-cleaner.sh -b
-```
-Clean Unnecessary Logs:
-```bash
-./termux-junk-cleaner.sh -l
-```
-Clean All Types of Junks:
-```bash
-./termux-junk-cleaner.sh -a
-```
+## Credits
+
+**ArjunCodesmith** - Original author and creator
+
+**DEAD1nsane** - Interactive menu UI and loading animations
