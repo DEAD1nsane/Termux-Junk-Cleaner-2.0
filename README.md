@@ -51,6 +51,12 @@ Then run:
 
 Non-interactive options: `--all` (clean everything), `--dry-run` (show reclaimable sizes, delete nothing), `--yes` (skip confirmation), `--help`.
 
+<p align="center">
+  <a href="screenshots/dry-run.png">
+    <img src="screenshots/dry-run.png" width="80%" />
+  </a>
+</p>
+
 ## Features
 
 - **Interactive Menu** - fzf-powered checkbox interface with arrow key navigation
