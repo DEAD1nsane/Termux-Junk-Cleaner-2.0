@@ -79,6 +79,20 @@ Non-interactive options: `--all` (clean everything), `--dry-run` (show reclaimab
 | `Enter` | Start cleanup |
 | `Esc` | Quit |
 
+## Screenshots
+
+<p align="center">
+  <a href="screenshots/unselected.png">
+    <img src="screenshots/unselected.png" width="30%" />
+  </a>
+  <a href="screenshots/selected.png">
+    <img src="screenshots/selected.png" width="30%" />
+  </a>
+  <a href="screenshots/finished.png">
+    <img src="screenshots/finished.png" width="30%" />
+  </a>
+</p>
+
 ## Credits
 
 **ArjunCodesmith** - Original author and creator
