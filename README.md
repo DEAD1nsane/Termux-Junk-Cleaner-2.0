@@ -41,12 +41,12 @@ cd Termux-Junk-Cleaner-2.0
 pkg install fzf -y
 
 # Make script executable
-chmod +x Termux-Junk-Cleaner-2.0.sh
+chmod +x tjc.sh
 ```
 
 Then run:
 ```bash
-./Termux-Junk-Cleaner-2.0.sh
+./tjc.sh
 ```
 
 Non-interactive options: `--all` (clean everything), `--dry-run` (show reclaimable sizes, delete nothing), `--yes` (skip confirmation), `--help`.
