@@ -17,7 +17,7 @@ $$
 </p>
 <p align="center">
 <a href="https://github.com/ArjunCodesmith"><img title="Tool" src="https://img.shields.io/badge/Tool-Termux Junk Cleaner-red.svg"></a>
-<a href="https://github.com/ArjunCodesmith"><img title="Version" src="https://img.shields.io/badge/Version-0.3.0-yellow.svg"></a>
+<a href="https://github.com/DEAD1nsane/termux-junk-cleaner"><img title="Version" src="https://img.shields.io/badge/Version-2.0-yellow.svg"></a>
 <a href="https://github.com/ArjunCodesmith"><img title="Maintainence" src="https://img.shields.io/badge/Maintained%3F-yes-blue.svg"></a>
 <a href="https://github.com/DEAD1nsane"><img title="Contributor" src="https://img.shields.io/badge/Contributor-DEAD1nsane-010101.svg"></a>
 </p>
@@ -32,7 +32,7 @@ Run this one-liner to clone, install dependencies, and make executable:
 
 ```bash
 # Clone the repository
-git clone https://github.com/ArjunCodesmith/termux-junk-cleaner.git
+git clone https://github.com/DEAD1nsane/termux-junk-cleaner.git
 
 # Navigate to directory
 cd termux-junk-cleaner
