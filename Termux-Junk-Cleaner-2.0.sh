@@ -3,17 +3,17 @@
 ##   Termux-Junk-Cleaner-2.0  :       Junk cleaner
 ##   Maintainer               :       DEAD1nsane
 ##   Original author          :       ArjunCodesmith
-##   Version                  :       2.0
+##   Version                  :       2.0.1
 ##   Github                   :       https://github.com/DEAD1nsane/Termux-Junk-Cleaner-2.0
 #
 ##    Termux-Junk-Cleaner-2.0  Copyright (C) 2024-2026  ArjunCodesmith (original),
-##    DEAD1nsane (maintainer, v2.0 interactive UI and Lodgepole package-cache cleaning)
+##    DEAD1nsane (maintainer, v2.0 interactive UI and package-cache cleaning)
 
 set -u
 
 author="DEAD1nsane"
 original_author="ArjunCodesmith"
-version="v2.0"
+version="v2.0.1"
 
 # Portable base paths (never hardcode /data/data/...).
 HOME_DIR="${HOME:-/data/data/com.termux/files/home}"

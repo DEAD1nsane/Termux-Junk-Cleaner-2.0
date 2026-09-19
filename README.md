@@ -17,7 +17,7 @@ $$
 </p>
 <p align="center">
 <a href="https://github.com/DEAD1nsane/Termux-Junk-Cleaner-2.0"><img title="Tool" src="https://img.shields.io/badge/Tool-Termux Junk Cleaner-green.svg"></a>
-<a href="https://github.com/DEAD1nsane/Termux-Junk-Cleaner-2.0"><img title="Version" src="https://img.shields.io/badge/Version-2.0-yellow.svg"></a>
+<a href="https://github.com/DEAD1nsane/Termux-Junk-Cleaner-2.0"><img title="Version" src="https://img.shields.io/badge/Version-2.0.1-yellow.svg"></a>
 <a href="https://github.com/DEAD1nsane/Termux-Junk-Cleaner-2.0"><img title="Maintainence" src="https://img.shields.io/badge/Maintained%3F-yes-blue.svg"></a>
 <a href="https://github.com/ArjunCodesmith"><img title="Original Author" src="https://img.shields.io/badge/Original-ArjunCodesmith-555555.svg"></a>
 </p>
