@@ -35,7 +35,7 @@ Run this one-liner to clone, install dependencies, and make executable:
 git clone https://github.com/DEAD1nsane/Termux-Junk-Cleaner-2.0.git
 
 # Navigate to directory
-cd termux-junk-cleaner
+cd Termux-Junk-Cleaner-2.0
 
 # Install fzf (required for interactive menu)
 pkg install fzf -y
