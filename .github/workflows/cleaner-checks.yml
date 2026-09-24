@@ -1,0 +1,27 @@
+name: Cleaner checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Check Bash syntax
+        run: bash -n tjc.sh
+      - name: Check help output
+        run: bash tjc.sh --help
+      - name: Run isolated dry-run
+        shell: bash
+        run: |
+          set -euo pipefail
+          test_root=$(mktemp -d)
+          trap 'rm -rf "$test_root"' EXIT
+          mkdir -p "$test_root/home" "$test_root/prefix/var/cache" "$test_root/tmp"
+          HOME="$test_root/home" PREFIX="$test_root/prefix" TMPDIR="$test_root/tmp" bash tjc.sh --dry-run
