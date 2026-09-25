@@ -22,6 +22,7 @@ TMP_DIR="${TMPDIR:-/data/data/com.termux/files/usr/tmp}"
 CACHE_DIR="$HOME_DIR/.cache"
 
 LOG_FILE="$HOME_DIR/.cleanup_log.txt"
+LOG_BUFFER=""
 
 # Counters for summary
 declare -i files_deleted=0
@@ -69,25 +70,17 @@ human() {
 }
 
 log_msg() {
-    printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$1" >> "$LOG_FILE" 2>/dev/null || true
+    LOG_BUFFER+="[$(date '+%Y-%m-%d %H:%M:%S')] $1"$'\n'
 }
 
-# run_task <label> <function> [args...]
-# Runs the worker in the background while an indeterminate loading bar
-# animates concurrently. The bar reflects real activity (it stops exactly
-# when the work finishes) instead of a fixed sleep.
-run_task() {
-    local label="$1"; shift
-    local out
-    out="$(mktemp "$TMP_DIR/tjc.XXXXXX" 2>/dev/null || mktemp)" || out="/dev/null"
+save_log() {
+    [ -n "$LOG_BUFFER" ] || return 0
+    printf '%s' "$LOG_BUFFER" >> "$LOG_FILE" 2>/dev/null
+}
 
-    # Worker runs async; its report lines are captured, not interleaved.
-    "$@" > "$out" 2>&1 &
-    local pid=$!
-
+animate_loader() {
     local width=30 pos=0 dir=1
-    echo -ne "\n${WHITE}  ▶ ${label}${RESET}\n"
-    while kill -0 "$pid" 2>/dev/null; do
+    while :; do
         local bar=""
         local i
         for ((i = 0; i < width; i++)); do
@@ -105,8 +98,24 @@ run_task() {
             pos=$((pos + dir * 2))
         fi
     done
-    wait "$pid"
+}
+
+# run_task <label> <function> [args...]
+run_task() {
+    local label="$1"; shift
+    local out
+    out="$(mktemp "$TMP_DIR/tjc.XXXXXX" 2>/dev/null || mktemp)" || out="/dev/null"
+
+    local width=30
+    echo -ne "\n${WHITE}  ▶ ${label}${RESET}\n"
+    animate_loader &
+    local loader_pid=$!
+
+    "$@" > "$out" 2>&1
     local rc=$?
+    kill "$loader_pid" 2>/dev/null || true
+    wait "$loader_pid" 2>/dev/null || true
+
     echo -ne "\r  ${GREY}[${DARK_GREEN}"
     printf '█%.0s' $(seq 1 "$width")
     echo -e "${GREY}]${RESET} done"
@@ -418,7 +427,6 @@ show_summary() {
     printf "${RED}║${WHITE}  %-22s ${GREEN}%10s${WHITE}   ${RED}║${RESET}\n" "Packages removed:" "~$packages_removed"
     printf "${RED}║${WHITE}  %-22s ${GREEN}%10s${WHITE}   ${RED}║${RESET}\n" "Space freed:" "$freed"
     echo -e "${RED}╚══════════════════════════════════════╝${RESET}"
-    echo -e "${GREEN}  Cleanup completed! Log: $LOG_FILE${RESET}\n"
     log_msg "SUMMARY files=$files_deleted cleaned=$packages_cleaned removed=~$packages_removed freed=$freed"
 }
 
@@ -503,3 +511,17 @@ done
 echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
 
 show_summary
+
+if [ "$ASSUME_YES" -ne 1 ]; then
+    echo ""
+    read -r -p $'\e[1;38;2;37;190;106m  Save cleanup report? (y/n): \e[0m' save_report
+    if [[ "$save_report" == "y" || "$save_report" == "Y" ]]; then
+        if save_log; then
+            echo -e "${GREEN}  Report saved: $LOG_FILE${RESET}"
+        else
+            echo -e "${RED}  Could not save cleanup report.${RESET}"
+        fi
+    else
+        echo -e "${GREY}  No cleanup report saved.${RESET}"
+    fi
+fi
