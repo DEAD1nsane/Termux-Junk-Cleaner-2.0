@@ -15,6 +15,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Verify Node version
+        run: node --version
+
       - name: Detect Termux environment
         shell: bash
         run: |
