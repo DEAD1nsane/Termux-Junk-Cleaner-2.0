@@ -17,7 +17,7 @@ $$
 </p>
 <p align="center">
 <a href="https://github.com/DEAD1nsane/Termux-Junk-Cleaner-2.0"><img title="Tool" src="https://img.shields.io/badge/Tool-Termux Junk Cleaner-green.svg"></a>
-<a href="https://github.com/DEAD1nsane/Termux-Junk-Cleaner-2.0"><img title="Version" src="https://img.shields.io/badge/Version-2.0.1-yellow.svg"></a>
+<a href="https://github.com/DEAD1nsane/Termux-Junk-Cleaner-2.0"><img title="Version" src="https://img.shields.io/badge/Version-2.0.2-yellow.svg"></a>
 <a href="https://github.com/DEAD1nsane/Termux-Junk-Cleaner-2.0"><img title="Maintainence" src="https://img.shields.io/badge/Maintained%3F-yes-blue.svg"></a>
 <a href="https://github.com/ArjunCodesmith"><img title="Original Author" src="https://img.shields.io/badge/Original-ArjunCodesmith-555555.svg"></a>
 </p>
@@ -49,7 +49,8 @@ Then run:
 ./tjc.sh
 ```
 
-Non-interactive options: `--all` (clean everything), `--dry-run` (show reclaimable sizes, delete nothing), `--yes` (skip confirmation), `--help`.
+Non-interactive options: `--all` (clean everything), `--only key1,key2` (run selected categories), `--exclude key1,key2` (skip categories with `--all`), `--dry-run` (show reclaimable sizes, delete nothing), `--info` (disk analyzer), `--history` (past cleanup summaries), `--yes` (skip confirmation), `--force` (bypass Termux safety check), `--version`, `--help`.
+Legacy per-category flags: `-c` cache, `-p` cached packages, `-n` autoremove, `-t` temp, `-b` backups, `-l` logs.
 
 <p align="center">
   <a href="screenshots/dry-run.png">
@@ -62,17 +63,34 @@ Non-interactive options: `--all` (clean everything), `--dry-run` (show reclaimab
 - **Interactive Menu** - fzf-powered checkbox interface with arrow key navigation
 - **Selective Cleanup** - Choose exactly what to clean
 - **Visual Feedback** - Animated loading bars for each operation
-- **Cleanup Summary** - View stats after each run
+- **Confirmation Preview** - See estimated reclaimable size before running
+- **Cleanup Summary** - Files, dirs, links, packages, space and time
+- **Disk Analyzer** - `--info` shows the biggest dirs and filesystem usage
+- **History** - `--history` replays past cleanup summaries
+- **Safety Gate** - Refuses to run outside Termux unless `--force` is passed
 
 ### What it cleans:
 | Option | Description |
 |--------|-------------|
 | Backup files | Removes `*.bak` files |
 | Cache files | Clears `~/.cache` and app cache |
-| Cached packages | Runs `apt-get clean` |
+| Cached packages | Runs `apt-get clean` + `autoclean` |
 | Log files | Removes `*.log` files |
 | Temporary files | Clears `~/tmp` |
-| Unused packages | Runs `apt autoremove` |
+| Unused packages | Runs `apt autoremove` (simulated first) |
+| Python bytecode | Removes `__pycache__` directories |
+| Core dump files | Removes crash dumps (`core`, `core.*`, `*.core`) |
+| Dangling symlinks | Removes broken symlinks |
+| Empty directories | Removes empty dirs (depth ≥ 3, pruned trees skipped) |
+| npm cache | Clears npm `_cacache` + npx cache |
+| bun cache | Clears `~/.bun/install/cache` |
+| pnpm store | Runs `pnpm store prune` / clears store |
+| yarn cache | Clears Yarn v2+ / legacy caches |
+| pip/uv cache | Runs `pip cache purge` + `uv cache clean` |
+| Go caches | Runs `go clean -cache -testcache` + mod cache |
+| cargo cache | Clears registry src + `.crate` files (index kept) |
+| gradle caches | Clears `~/.gradle/caches` |
+| maven repository | Clears `~/.m2/repository` |
 
 ## Controls
 
@@ -104,3 +122,5 @@ Non-interactive options: `--all` (clean everything), `--dry-run` (show reclaimab
 **ArjunCodesmith** - Original author and creator, logo design
 
 **DEAD1nsane** - Interactive menu UI and loading animations
+
+**Cluster fork additions** - dev-tool caches (pnpm/yarn/go/gradle/maven), `__pycache__`/core-dump/dangling-link/empty-dir cleaners, size-preview confirmation, `--info` / `--history` / `--only` / `--exclude`, Termux safety gate
