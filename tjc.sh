@@ -33,7 +33,7 @@ declare -i dirs_deleted=0
 declare -i links_deleted=0
 start_time=$(date +%s)
 
-# Fork additions (v2.1)
+# Fork additions
 FORCE_ENABLED=0
 
 # Colors (rbw-amoled theme)
@@ -344,7 +344,7 @@ clean_cargo_cache() {
 }
 
 # ---------------------------------------------------------------------------
-# New v2.1 cleaners
+# New cleaners
 # ---------------------------------------------------------------------------
 
 clean_pycache() {

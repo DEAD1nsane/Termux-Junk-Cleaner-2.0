@@ -123,4 +123,4 @@ Legacy per-category flags: `-c` cache, `-p` cached packages, `-n` autoremove, `-
 
 **DEAD1nsane** - Interactive menu UI and loading animations
 
-**Cluster fork v2.1 additions** - dev-tool caches (pnpm/yarn/go/gradle/maven), `__pycache__`/core-dump/dangling-link/empty-dir cleaners, size-preview confirmation, `--info` / `--history` / `--only` / `--exclude`, Termux safety gate
+**Cluster fork additions** - dev-tool caches (pnpm/yarn/go/gradle/maven), `__pycache__`/core-dump/dangling-link/empty-dir cleaners, size-preview confirmation, `--info` / `--history` / `--only` / `--exclude`, Termux safety gate
